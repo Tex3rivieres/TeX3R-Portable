@@ -10,17 +10,19 @@ Décompresser l'archive dans **"./TeX3R-Portable/PortableGit"**
 
 Décompresser l'archive dans **"./TeX3R-Portable/VSCodium"**
 
+4. Créer le repertoire **"./TeX3R-Portable/VSCodium/data"**
+
 4. Telecharger[Miktex](https://miktex.org/download)
 
    i. Renommer **"basic-miktex-*.exe"** en **"miktex-portable.exe"**
 
    ii. Executer et indiquer **"./TeX3R-Portable/miktex"** comme repertoire d'installation
 
-6. Copier **TeX3R.bat** et **update-teX3R.bat** dans **"./TeX3R-Portable"**
+6. Copier **TeX3R.bat** dans **"./TeX3R-Portable"**
 
-7. Executer **update-teXR.bat**
+7. Executer **teXR.bat** puis quitter VSCodium.
    
-8. Exécuter "./Tex3R_Portable/miktex/miktex-portable.cmd"
+8. Exécuter **"./Tex3R_Portable/miktex/miktex-portable.cmd"**
 
   i. Ouvrir la console à partir de la barre des tâches :
   
@@ -31,5 +33,15 @@ Décompresser l'archive dans **"./TeX3R-Portable/VSCodium"**
 ![](assets/images/update-miktex.png)
   
  iii. Ajouter **"./TeX3R-Portable/TeX3R-CS"** au "Path" Miktex
+ 
+ ![](assets/images/path-miktex.png)
 
+ iv. Rafraîchir la base de données des noms de fichiers
 
+  ![](assets/images/name_database-miktex.png)
+
+9. Executer TeX3R.bat
+
+10. Installer l'extension TeX3R
+
+Enjoy ;) 
