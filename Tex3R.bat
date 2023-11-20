@@ -1,11 +1,5 @@
 cd /d %~dp0
-set PATH=
-%cd%\PortableGit\cmd;
-%cd%\miktex\texmfs\install\miktex\bin\x64;
-%cd%\Tex3R-CS;
-%cd%\python;
-%cd%\Sumatra;
-%PATH%
+set PATH=%cd%\PortableGit\cmd;%cd%\miktex\texmfs\install\miktex\bin\x64;%cd%\Tex3R-CS;%cd%\python;%cd%\Sumatra;%PATH%
 
 SET OSFONTDIR=%cd%\TeX3R-CS\tex\fonts\TeX3R
 
