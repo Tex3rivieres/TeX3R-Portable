@@ -26,7 +26,7 @@
   
    * Mettre à jour Miktex : 
 
- <img src="./assets/images/update-miktex.png" width="300"/>
+ <img src="./assets/images/update-miktex.png" width="200"/>
   
    * Ajouter **"./TeX3R-Portable/TeX3R-CS"** au "Path" Miktex
  
