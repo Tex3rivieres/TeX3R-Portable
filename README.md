@@ -26,7 +26,7 @@
   
    * Mettre à jour Miktex : 
 
- ![](assets/images/update-miktex.png)
+ <img src="./assets/images/update-miktex.png" width="400"/>
   
    * Ajouter **"./TeX3R-Portable/TeX3R-CS"** au "Path" Miktex
  
@@ -39,7 +39,9 @@
 ## Utilisation du programme
 * Utiliser **"./TeXR3R-Portable/TeX3R.bat"** pour éxecuter et maintenir à jour TeX3R
 * Installer l'extension TeX3R (1 seule fois)
+**Attention**, la première compilation d'un document tex est un peu longue car Miktex telecharge et installe les packages qui ne sont pas déjà dans sa base.
 
 ## Enjoy ;) 
 
-Pour les Impatients : ArchiveSFX prête à l'emploie
+## Poue les impateints
+ArchiveSFX prête à l'emploi
