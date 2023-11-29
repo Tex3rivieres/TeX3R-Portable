@@ -28,7 +28,7 @@
 
  <img src="./assets/images/update-miktex.png" width="400"/>
   
-   * Ajouter **"./TeX3R-Portable/TeX3R-CS"** au "Path" Miktex
+   * Ajouter **"./TeX3R-Portable/TeX3R-ClasseStyle"** au "Path" Miktex
  
   ![](assets/images/path-miktex.png)
 
@@ -43,5 +43,5 @@
 
 ## Enjoy ;) 
 
-## Poue les impateints
-ArchiveSFX prête à l'emploi
+## Pour les impateints
+ArchiveSFX prête à l'emploi (à venir)
