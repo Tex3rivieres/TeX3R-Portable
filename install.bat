@@ -134,8 +134,6 @@ echo Installation langage fr et TeX3R
 codium --install-extension MS-CEINTL.vscode-language-pack-fr
 echo Installation TeX3R
 codium --install-extension Tex3R.tex3r
-echo installation terminee.
-
 
 echo installation terminee
 pause
