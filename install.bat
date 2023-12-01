@@ -104,8 +104,7 @@ echo *********** CREATION start.bat et update.bat ***********
 @echo off
 
 :: Creer le fichier start.bat
-> start.bat echo chcp 65001
->> start.bat echo cd /d %%~dp0
+> start.bat echo cd /d %%~dp0
 >> start.bat echo ::
 >> start.bat echo :: Variables environnement systeme temporaires
 >> start.bat echo SET PATH=%%CD%%\PortableGit\cmd;%%CD%%\miktex\texmfs\install\miktex\bin\x64;%%CD%%\Tex3R-ClasseStyle;%%cd%%\VSCodium\bin;%%PATH%%
@@ -114,8 +113,7 @@ echo *********** CREATION start.bat et update.bat ***********
 
 
 :: Creer le fichier update.bat
-> update.bat echo chcp 65001
->> update.bat echo cd /d %%~dp0
+> update.bat echo cd /d %%~dp0
 >> update.bat echo ::
 >> update.bat echo :: Variables environnement systeme temporaires
 >> update.bat echo SET PATH=%%CD%%\PortableGit\cmd;%%CD%%\miktex\texmfs\install\miktex\bin\x64;%%CD%%\Tex3R-ClasseStyle;%%cd%%\VSCodium\bin;%%PATH%%
@@ -139,7 +137,7 @@ codium --install-extension Tex3R.tex3r
 echo installation terminee.
 
 
-echo installation terminée
+echo installation terminee
 pause
 
 
