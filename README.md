@@ -1,7 +1,12 @@
-# TeX3R-Portable
+# TeX3R-Portable automatique windows 10 et supérieur
+* Créer un répertoire à la racine du support USB. Par exemple: **"./TeX3R-Portable"**
+* Copier install.bat à la racien et exécuter
+
+# TeX3R-Portable manuel
 
 ## Repertoire du programme
 * Créer un répertoire à la racine du support USB. Par exemple: **"./TeX3R-Portable"**
+
 ## Git pour installation et mise à jour
  
 * Telecharger la version "Git Portable" adaptée à votre sytème d'exploitation :[git-scm.com/downloads](https://git-scm.com/downloads)
@@ -28,7 +33,7 @@
 
  <img src="./assets/images/update-miktex.png" width="400"/>
   
-   * Ajouter **"./TeX3R-Portable/TeX3R-ClasseStyle"** au "Path" Miktex
+   * Ajouter **"./TeX3R-Portable/TeX3R-CS"** au "Path" Miktex
  
   ![](assets/images/path-miktex.png)
 
@@ -43,5 +48,5 @@
 
 ## Enjoy ;) 
 
-## Pour les impateints
-ArchiveSFX prête à l'emploi (à venir)
+## Poue les impateints
+ArchiveSFX prête à l'emploi
