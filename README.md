@@ -1,6 +1,6 @@
 # TeX3R-Portable installation automatique (windows)
 * Créer un répertoire à la racine du support USB. Par exemple: **"./TeX3R-Portable"**
-* Copier install.bat à la racine et exécuter
+* Copier install.bat à l'intérieur et exécuter
 
 # TeX3R-Portable installation manuelle
 
