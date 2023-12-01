@@ -1,5 +1,5 @@
 @echo off
-rem setlocal enabledelayedexpansion
+setlocal enabledelayedexpansion
 
 rem chcp 65001
 cd /d %~dp0
@@ -80,7 +80,7 @@ echo Installation de miktex portable (peut durer quelques minutes, patientez...)
 miktexsetup_standalone --verbose --local-package-repository=%CD%\miktex-temp  --portable=%cd%\miktex --package-set=basic install
 
 cls
-echo *****  Mise à jour des packages *************
+echo *****  Update packages *************
 echo Enregistrement de TeX3R-ClasseStyle dans MiKTeX...
 initexmf --register-root="%TeX3R-ClasseStyle_PATH%"
 
@@ -92,12 +92,12 @@ miktex packages update
 miktex update-package-database
 
 cls
-echo *********  Installtion Extension Tex3R à partir du vsix *****************
+echo *********  Installtion Extensions VScodium *****************
 
 :: Téléchargement de l'extension
 echo Installation langage fr et TeX3R
-
 codium --install-extension MS-CEINTL.vscode-language-pack-fr
+echo Installation TeX3R
 codium --install-extension Tex3R.tex3r
 
 
