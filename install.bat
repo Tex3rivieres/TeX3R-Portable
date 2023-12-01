@@ -130,12 +130,14 @@ cls
 echo *********  Installation Extensions VScodium (langue fr et TeX3R) *****************
 
 :: Telechargement de l'extension
-echo Installation langage fr et TeX3R
-codium --install-extension MS-CEINTL.vscode-language-pack-fr
-echo Installation TeX3R
-codium --install-extension Tex3R.tex3r
+echo Installation langage fr (ctrl+maj+P:configure display language pour activer)
+call codium --install-extension MS-CEINTL.vscode-language-pack-fr
 
-echo installation terminee
+cls
+echo Installation TeX3R
+call codium --install-extension Tex3R.tex3r
+
+echo fin de l'installation, utiliser start.bat pour demarrer.
 pause
 
 
