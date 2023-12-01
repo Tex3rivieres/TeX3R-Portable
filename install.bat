@@ -1,4 +1,11 @@
 @echo off
+echo **************************************************
+echo * Installation Script for TeX3R Environment      *
+echo * Author: Frédéric Léothaud - Vincent Crombez                          *
+echo * Copyright (C) [2023] TeX3R   *
+echo **************************************************
+echo.
+
 setlocal enabledelayedexpansion
 
 rem chcp 65001
@@ -16,11 +23,18 @@ SET PortableGit_PATH=%cd%\PortableGit\cmd
 SET zip_PATH=%cd%\7zip
 
 cls
-echo *********** VScodium ***********
+echo **********************************
+echo * Installation de VSCodium       *
+echo **********************************
+
+
 echo Telechargement de VSCodium...
 powershell -command "& { Invoke-WebRequest -Uri 'https://github.com/VSCodium/vscodium/releases/download/1.84.2.23319/VSCodium-win32-x64-1.84.2.23319.zip' -OutFile 'VSCodium.zip' }"
 
 cls
+echo **********************************
+echo * Installation de VSCodium       *
+echo **********************************
 echo extraction de VScodium.zip...
 powershell -command "& { Expand-Archive -Path '.\VScodium.zip' -DestinationPath '.\VScodium' }"
 
@@ -29,34 +43,51 @@ md %Vscodium_PATH%\data
 
 
 cls
-echo *********** 7zip ***********
+echo **********************************
+echo * Installation de 7-Zip          *
+echo **********************************
+
 
 echo Telechargement de 7zip...
 powershell -command "& { Invoke-WebRequest -Uri 'https://www.7-zip.org/a/7z2301-x64.exe' -OutFile '7zip.exe' }"
 
 cls
+echo **********************************
+echo * Installation de 7-Zip          *
+echo **********************************
 echo Installation 7zip (cliquer sur "oui")
 start /wait "" 7zip.exe /S /D="%zip_PATH%"
 
 cls
-echo *********** PortableGit ***********
+echo **********************************
+echo * Installation de PortableGit    *
+echo **********************************
+
 :: Telechargement de PortableGit
 echo Telechargement de PortableGit...
 powershell -command "& { Invoke-WebRequest -Uri 'https://github.com/git-for-windows/git/releases/download/v2.43.0.windows.1/PortableGit-2.43.0-64-bit.7z.exe' -OutFile 'PortableGit.7z.exe' }"
 
 cls
-:: Decompression de PortableGit.7z.exe
+echo **********************************
+echo * Installation de PortableGit    *
+echo **********************************
 echo Decompression de PortableGit...
 7z x PortableGit.7z.exe -o"%CD%\PortableGit" -y
 
 cls
-echo *********** TeX3R-ClasseStyle ***********
+echo **********************************
+echo * Clonage de TeX3R-ClasseStyle   *
+echo **********************************
+
 echo Clonage du depot TeX3R-ClasseStyle en cours...
 git clone https://github.com/Tex3rivieres/TeX3R-ClasseStyle.git "%TeX3R-ClasseStyle_PATH%"
 
 
 cls
-echo *********** Miktex ***********
+echo **********************************
+echo * Installation de MiKTeX        *
+echo **********************************
+
 :: Telechargement de l'utilitaire de configuration MiKTeX
 echo Telechargement de l'utilitaire de configuration MiKTeX
 powershell -command "& { Invoke-WebRequest -Uri 'https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktexsetup-5.5.0+1763023-x64.zip' -OutFile 'miktexsetup.zip' }"
@@ -77,7 +108,10 @@ echo Installation de miktex portable (peut durer quelques minutes, patientez...)
 miktexsetup_standalone --verbose --local-package-repository=%CD%\miktex-temp  --portable=%cd%\miktex --package-set=basic install
 
 cls
-echo *********** Mise a jour des packages ***********
+echo **********************************
+echo * Mise à jour des packages MiKTeX*
+echo **********************************
+
 echo Enregistrement de TeX3R-ClasseStyle dans MiKTeX...
 initexmf --register-root="%TeX3R-ClasseStyle_PATH%"
 
@@ -91,7 +125,10 @@ miktex update-package-database
 
 cls
 :: NETTOYAGE 
-echo *********** NETTOYAGE ***********
+echo **********************************
+echo * Nettoyage des fichiers         *
+echo **********************************
+
 del PortableGit.7z.exe
 del 7zip.exe
 del miktexsetup_standalone.exe
@@ -100,7 +137,10 @@ del vscodium.zip
 rd /s /q "%CD%\miktex-temp"
 rd /s /q "%CD%\7zip"
 
-echo *********** CREATION start.bat et update.bat ***********
+echo **********************************
+echo * Création de fichiers Batch     *
+echo **********************************
+
 @echo off
 
 :: Creer le fichier start.bat
@@ -127,9 +167,12 @@ echo *********** CREATION start.bat et update.bat ***********
 >> update.bat echo pause
 
 cls
-echo *********  Installation Extensions VScodium (langue fr et TeX3R) *****************
+echo **********************************
+echo * Installation des Extensions   *
+echo **********************************
 
-:: Telechargement de l'extension
+
+:: Installation extensions VScodium
 echo Installation langage fr (ctrl+maj+P:configure display language pour activer)
 call codium --install-extension MS-CEINTL.vscode-language-pack-fr
 
