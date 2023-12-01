@@ -89,7 +89,7 @@ miktex packages update
 miktex update-package-database
 
 
-
+cls
 :: NETTOYAGE 
 echo *********** NETTOYAGE ***********
 del PortableGit.7z.exe
