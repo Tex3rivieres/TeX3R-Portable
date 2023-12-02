@@ -108,7 +108,7 @@ miktexsetup_standalone --verbose --local-package-repository=%CD%\miktex-temp  --
 
 cls
 echo **********************************
-echo * Mise à jour des packages MiKTeX*
+echo * Mise a jour des packages MiKTeX*
 echo **********************************
 timeout /t 2 /nobreak >nul
 
@@ -143,7 +143,7 @@ rd /s /q "%CD%\miktex-temp"
 rd /s /q "%CD%\7zip"
 
 echo **********************************
-echo * Création de fichiers Batch     *
+echo * Creation de fichiers Batch     *
 echo **********************************
 timeout /t 2 /nobreak >nul
 
