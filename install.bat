@@ -1,7 +1,7 @@
 @echo off
 echo **************************************************
 echo * Installation de l'environnement TeX3R          *
-echo * Author: Frédéric Léothaud - Vincent Crombez    *
+echo * Author: Frederic Leothaud - Vincent Crombez    *
 echo * Copyright (C) [2023] TeX3R                     *
 echo **************************************************
 echo.
