@@ -51,6 +51,7 @@ powershell -command "& { Invoke-WebRequest -Uri 'https://www.7-zip.org/a/7z2301-
 
 cls
 echo Installation 7zip (cliquer sur "oui")
+timeout /t 3 /nobreak >nul
 start /wait "" 7zip.exe /S /D="%zip_PATH%"
 
 cls
