@@ -12,11 +12,11 @@ rem chcp 65001
 cd /d %~dp0
 
 :: Variables environnement systeme temporaires
-SET PATH=%CD%\PortableGit\cmd;%CD%\miktex\texmfs\install\miktex\bin\x64;%CD%\Tex3R-ClasseStyle;%CD%\7zip;%cd%\VSCodium\bin;%PATH%
+SET PATH=%CD%\PortableGit\cmd;%CD%\miktex\texmfs\install\miktex\bin\x64;%CD%\TeX3R-ClasseStyle-TeX3R;%CD%\7zip;%cd%\VSCodium\bin;%PATH%
 SET OSFONTDIR=%cd%\TeX3R-ClasseStyle\tex\fonts\TeX3R
 
 :: Configuration des variables PATH pour utiliser dans les commandes
-SET TeX3R-ClasseStyle_PATH=%cd%\TeX3R-ClasseStyle
+SET TeX3R-ClasseStyle_PATH=%cd%\TeX3R-ClasseStyle-TeX3R
 SET VSCodium_PATH=%cd%\VSCodium
 SET Miktex_PATH=%cd%\miktex
 SET PortableGit_PATH=%cd%\PortableGit\cmd
@@ -40,48 +40,52 @@ echo Creation du repertoire personnel data...
 md %Vscodium_PATH%\data
 
 
+@REM cls
+@REM echo **********************************
+@REM echo * Installation de 7-Zip          *
+@REM echo **********************************
+@REM timeout /t 2 /nobreak >nul
+@REM cls
+@REM echo Telechargement de 7zip...
+@REM powershell -command "& { Invoke-WebRequest -Uri 'https://www.7-zip.org/a/7z2301-x64.exe' -OutFile '7zip.exe' }"
+
+@REM cls
+@REM echo Installation 7zip (cliquer sur "oui")
+@REM timeout /t 3 /nobreak >nul
+@REM start /wait "" 7zip.exe /S /D="%zip_PATH%"
+
+@REM cls
+@REM echo **********************************
+@REM echo * Installation de PortableGit    *
+@REM echo **********************************
+@REM timeout /t 2 /nobreak >nul
+
+@REM cls
+@REM echo Telechargement de PortableGit...
+@REM powershell -command "& { Invoke-WebRequest -Uri 'https://github.com/git-for-windows/git/releases/download/v2.43.0.windows.1/PortableGit-2.43.0-64-bit.7z.exe' -OutFile 'PortableGit.7z.exe' }"
+
+@REM cls
+@REM echo **********************************
+@REM echo * Installation de PortableGit    *
+@REM echo **********************************
+@REM timeout /t 2 /nobreak >nul
+
+@REM cls
+@REM echo Decompression de PortableGit...
+@REM 7z x PortableGit.7z.exe -o"%CD%\PortableGit" -y
+
 cls
 echo **********************************
-echo * Installation de 7-Zip          *
+echo * TeX3R-ClasseStyle              *
 echo **********************************
 timeout /t 2 /nobreak >nul
 cls
-echo Telechargement de 7zip...
-powershell -command "& { Invoke-WebRequest -Uri 'https://www.7-zip.org/a/7z2301-x64.exe' -OutFile '7zip.exe' }"
+echo Telechargement de TeX3R-ClasseStyle.zip...
+powershell -command "& { Invoke-WebRequest -Uri 'https://github.com/Tex3rivieres/TeX3R-ClasseStyle/archive/refs/tags/TeX3R.zip' -OutFile 'TeX3R-ClasseStyle.zip' }"
 
 cls
-echo Installation 7zip (cliquer sur "oui")
-timeout /t 3 /nobreak >nul
-start /wait "" 7zip.exe /S /D="%zip_PATH%"
-
-cls
-echo **********************************
-echo * Installation de PortableGit    *
-echo **********************************
-timeout /t 2 /nobreak >nul
-
-cls
-echo Telechargement de PortableGit...
-powershell -command "& { Invoke-WebRequest -Uri 'https://github.com/git-for-windows/git/releases/download/v2.43.0.windows.1/PortableGit-2.43.0-64-bit.7z.exe' -OutFile 'PortableGit.7z.exe' }"
-
-cls
-echo **********************************
-echo * Installation de PortableGit    *
-echo **********************************
-timeout /t 2 /nobreak >nul
-
-cls
-echo Decompression de PortableGit...
-7z x PortableGit.7z.exe -o"%CD%\PortableGit" -y
-
-cls
-echo **********************************
-echo * Clonage de TeX3R-ClasseStyle   *
-echo **********************************
-timeout /t 2 /nobreak >nul
-cls
-echo Clonage du depot TeX3R-ClasseStyle en cours...
-git clone https://github.com/Tex3rivieres/TeX3R-ClasseStyle.git "%TeX3R-ClasseStyle_PATH%"
+echo extraction de TeX3R-ClasseStyle.zip...
+powershell -command "& { Expand-Archive -Path '.\TeX3R-ClasseStyle.zip' -DestinationPath '.' }"
 
 
 cls
@@ -134,13 +138,12 @@ echo **********************************
 echo * Nettoyage des fichiers         *
 echo **********************************
 timeout /t 2 /nobreak >nul
-del PortableGit.7z.exe
-del 7zip.exe
+del TeX3R-ClasseStyle.zip
 del miktexsetup_standalone.exe
 del miktexsetup.zip
 del vscodium.zip
 rd /s /q "%CD%\miktex-temp"
-rd /s /q "%CD%\7zip"
+
 
 echo **********************************
 echo * Creation de fichiers Batch     *
@@ -157,21 +160,6 @@ echo star.bat
 timeout /t 2 /nobreak >nul
 
 cls
-echo update.bat
-> update.bat echo cd /d %%~dp0
->> update.bat echo ::
->> update.bat echo :: Variables environnement systeme temporaires
->> update.bat echo SET PATH=%%CD%%\PortableGit\cmd;%%CD%%\miktex\texmfs\install\miktex\bin\x64;%%CD%%\Tex3R-ClasseStyle;%%cd%%\VSCodium\bin;%%PATH%%
->> update.bat echo SET TeX3R-ClasseStyle_PATH=%%cd%%\TeX3R-ClasseStyle
->> update.bat echo SET VSCodium_PATH=%%cd%%\VSCodium
->> update.bat echo SET Miktex_PATH=%%cd%%\miktex
->> update.bat echo SET PortableGit_PATH=%%cd%%\PortableGit\cmd
->> update.bat echo cd "%%TeX3R-ClasseStyle_PATH%%"
->> update.bat echo git pull
->> update.bat echo echo mise a jour terminee
->> update.bat echo pause
-
-cls
 echo **********************************
 echo * Installation des Extensions   *
 echo **********************************
@@ -185,7 +173,10 @@ cls
 echo Installation TeX3R
 call codium --install-extension Tex3R.tex3r
 
-echo fin de l'installation, utiliser start.bat pour demarrer.
+cls
+echo *************************************************************
+echo * fin de l'installation, utiliser start.bat pour demarrer.  *
+echo *************************************************************
 pause
 
 
