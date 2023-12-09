@@ -2,7 +2,7 @@
 
 ## Idée générale
 
-Après la création du répertoire data de VSCodium, ajouter les deux fichiers de configuration via ```install.bat``` au bon endroit de l'arborescence de fichiers.
+Après la création du répertoire ```data``` de VSCodium, ajouter les deux fichiers de configuration via ```install.bat``` au bon endroit de l'arborescence de fichiers.
 
 ## settings.json
 
