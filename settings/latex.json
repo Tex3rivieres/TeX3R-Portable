@@ -1,0 +1,798 @@
+{
+	"Nouveau document": {
+		"prefix": "document",
+		"body": [
+			"\\documentclass[${1:fiche}]{classe-tex3R} %#1=diapo (optionnel)",
+			"\\usepackage{style-tex3R}",
+			"",
+			"\\definirchapitre{$2}{$3} %#1=nombre, #2=nom",
+			"\\definirniveau{$4} %#1=nombre ou nom",
+			"",
+			"\\begin{document}",
+			"",
+			"\\begin{luacode}",
+			"\tmesParametres('${5:basique}') --activite/bilan/corrige/cours/DM/DS/flash/interro/TD",
+			"\\end{luacode}",
+			"\\parametrage",
+			"",
+			"${0:%Le texte du document}",
+			"",
+			"\\end{document}"
+		],
+		"description": "Permet de créer un nouveau document (avec paramètres prédéfinis)"
+	},
+
+	"Parametres": {
+		"prefix": "parametres",
+		"body": [
+			"\tType = '${4:basique}' --activite/bilan/corrige/cours/DM/DS/flash/interro/TD",
+			"\tImpression = ${5:false} --true",
+			"\tHeader = ${6:false} --true",
+			"\tTaille = ${7:nil} --'14pt'",
+			"\tStretch = ${8:false} --true",
+			"",
+			"\tCorrection = ${9:false} --true",
+			"\tEnonce = ${10:false} --true",
+			"\tVisible = ${11:false} --true",
+			"",
+			"\tCompetence = ${12:false} --true",
+			"\tBareme = ${13:false} --true",
+			"\tDifficulte = ${14:false} --true",
+			"\tSource = ${15:false} --true",
+			"\tTheme = ${16:false} --true",
+			"$0"
+		],
+		"description": "Paramétrage avancé"
+	},
+
+	"Titre personnalisé": {
+		"prefix": "titre",
+		"body": [
+			"\\montitre[\\hspace{-0.25em}]{$TM_SELECTED_TEXT$1} ${0:%#1=logo (optionnel), #2=contenu}"
+		],
+		"description": "Titre personnalisé"
+	},
+
+	"Signature": {
+		"prefix": "signature",
+		"body": [
+			"\\iffiche\\ofoot{\\ccbyncsaeu\\par\\vspace{-0.2em}\\tiny mon.mail@ac-dijon.fr}\\fi"
+		],
+		"description": "Signature en pied de page"
+	},
+
+	"Numérotation": {
+		"prefix": "numérotation",
+		"body": [
+			"\\iffiche\\cfoot{\\pagemark}\\fi"
+		],
+		"description": "Numérotation de bas de page"
+	},
+
+
+
+  
+
+
+
+	"Gras": {
+		"prefix": ["textbf","gras","bf"],
+		"body": [
+			"\\textbf{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Texte en gras"
+	},
+
+	"Italique": {
+		"prefix": ["textit","italique"],
+		"body": [
+			"\\textit{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Texte en italique"
+	},
+
+	"Souligné": {
+		"prefix": ["underline","souligné"],
+		"body": [
+			"\\ul{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Texte souligné"
+	},
+
+	"Rayé": {
+		"prefix": ["st","rayé"],
+		"body": [
+			"\\st{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Texte rayé"
+	},
+
+	"Rouge": {
+		"prefix": "rouge",
+		"body": [
+			"\\textcolor{rouge}{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Texte en rouge"
+	},
+
+	"Vert": {
+		"prefix": "vert",
+		"body": [
+			"\\textcolor{vert}{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Texte en vert"
+	},
+
+		"Bleu": {
+		"prefix": "bleu",
+		"body": [
+			"\\textcolor{bleu}{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Texte en bleu"
+	},
+
+
+	"Surligné": {
+		"prefix": ["hl","surligné","important"],
+		"body": [
+			"\\important{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Texte important (surligné par défaut)"
+	},
+
+	"Police de machine à écrire": {
+		"prefix": ["texttt","machine","tt"],
+		"body": [
+			"\\texttt{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Police de machine à écrire"
+	},
+
+	"Tailletexte": {
+		"prefix": "tailletexte",
+		"body": [
+			"\\tailletexte{${1:0}} ${0:%#1=-4/-3/-2/-1/0/1/2/3/4} "
+		],
+		"description": "Module la taille du texte de -4 à 4"
+	},
+
+
+  
+
+
+
+	"Centré": {
+		"prefix": ["centré"],
+		"body": [
+			"\\begin{center}",
+			"\t$TM_SELECTED_TEXT$1",
+			"\\end{center}"
+		],
+		"description": "Centre le contenu horizontalement"
+	},
+
+		"A droite": {
+		"prefix": ["droite","flushright"],
+		"body": [
+			"\\begin{flushright}",
+			"\t$TM_SELECTED_TEXT$1",
+			"\\end{flushright}$0"
+		],
+		"description": "Aligne le texte à droite"
+	},
+
+		"Chapitre": {
+		"prefix": ["chapitre"],
+		"body": [
+			"\\chapitre{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Insère un chapitre (une part pour la TOC)"
+	},
+
+	"Partie": {
+		"prefix": ["partie","subsection"],
+		"body": [
+			"\\partie{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Insère une partie (subsection pour la TOC)"
+	},
+
+	"Sous-partie": {
+		"prefix": ["souspartie"],
+		"body": [
+			"\\souspartie{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Insère une souspartie (subsubsection pour la TOC)"
+	},
+
+	"Minipage double": {
+		"prefix": "minipage",
+		"body": [
+			"\\adjustbox{valign=t}{\\begin{minipage}{0.48\\linewidth}%",
+			"\t$TM_SELECTED_TEXT$1",
+			"\\end{minipage}}\\hfill%",
+			"\\adjustbox{valign=t}{\\begin{minipage}{0.48\\linewidth}%",
+			"\t$2",
+			"\\end{minipage}}%$0"
+		],
+		"description": "Créé deux minipages côte à côte"
+	},
+
+	"Itemize": {
+		"prefix": ["itemize","liste à puces"],
+		"body": [
+			"\\begin{itemize}",
+			"\t\\item $TM_SELECTED_TEXT$1",
+			"\\end{itemize}$0"
+		],
+		"description": "Créé une liste à puces"
+	},
+
+	"Enumerate": {
+		"prefix": ["enumerate","liste numérotée"],
+		"body": [
+			"\\begin{enumerate}",
+			"\t\\item $TM_SELECTED_TEXT$1",
+			"\\end{enumerate}$0"
+		],
+		"description": "Créé une liste numérotée"
+	},
+
+	"Tasks": {
+		"prefix": "tasks",
+		"body": [
+			"\\begin{tasks}[style=enumerate](${1:1})",
+			"\t\\task $2",
+			"\\end{tasks}$0"
+		],
+		"description": "Créé un environnement tasks (puces flexibles)"
+	},
+
+	"Tcolorbox": {
+		"prefix": ["tcolorbox","encadrer"],
+		"body": [
+			"\\begin{tcolorbox}",
+			"\t$TM_SELECTED_TEXT$1",
+			"\\end{tcolorbox}$0"
+		],
+		"description": "Encadre à l'aide d'une tcolorbox"
+	},
+
+	"Lstlisting": {
+		"prefix": ["lstlisting","listing"],
+		"body": [
+			"\\begin{lstlisting}",
+			"$TM_SELECTED_TEXT$1",
+			"\\end{lstlisting}$0"
+		],
+		"description": "Créé un environnement lstlisting"
+	},
+
+
+  
+
+
+
+"Visible": {
+		"prefix": "visible",
+		"body": [
+			"\\begin{visible}[false]",
+			"\t$TM_SELECTED_TEXT$1 %Texte visible si Visible = false",
+			"\\end{visible}",
+			"",
+			"\\begin{visible}[true]",
+			"\t$2 %Texte visible si Visible = true",
+			"\\end{visible}$0"
+		],
+		"description": "Créé les environnements visible"
+	},
+
+	"Definition": {
+		"prefix": "definition",
+		"body": [
+			"%%% DÉBUT DÉFINITION %%%",
+			"\\begin{definition}",
+			"\t$TM_SELECTED_TEXT$1",
+			"\\end{definition}",
+			"%%% FIN DÉFINITION %%%$0"
+		],
+		"description": "Créé l'environnement definition"
+	},
+
+	"Convention": {
+		"prefix": "convention",
+		"body": [
+			"%%% DÉBUT CONVENTION %%%",
+			"\\begin{convention}",
+			"\t$TM_SELECTED_TEXT$1",
+			"\\end{convention}",
+			"%%% FIN CONVENTION %%%$0"
+		],
+		"description": "Créé l'environnement convention"
+	},
+
+	"Propriété": {
+		"prefix": "propriété",
+		"body": [
+			"%%% DÉBUT PROPRIÉTÉ %%%",
+			"\\begin{propriete}",
+			"\t$TM_SELECTED_TEXT$1",
+			"\\end{propriete}",
+			"%%% FIN PROPRIÉTÉ %%%$0"
+		],
+		"description": "Créé l'environnement propriete"
+	},
+
+	"Méthode": {
+		"prefix": ["méthode","methode"],
+		"body": [
+			"%%% DÉBUT MÉTHODE %%%",
+			"\\begin{methode}",
+			"\t$TM_SELECTED_TEXT$1",
+			"\\end{methode}",
+			"%%% FIN MÉTHODE %%%$0"
+		],
+		"description": "Créé l'environnement methode"
+	},
+
+	"Application": {
+		"prefix": "application",
+		"body": [
+			"%%% DÉBUT APPLICATION %%%",
+			"\\begin{application}",
+			"\t$TM_SELECTED_TEXT$1",
+			"\\end{application}",
+			"%%% FIN APPLICATION %%%$0"
+		],
+		"description": "Créé l'environnement application"
+	},
+
+	"Exemple": {
+		"prefix": "exemple",
+		"body": [
+			"%%% DÉBUT EXEMPLE %%%",
+			"\\begin{exemple}",
+			"\t$TM_SELECTED_TEXT$1",
+			"\\end{exemple}",
+			"%%% FIN EXEMPLE %%%$0"
+		],
+		"description": "Créé l'environnement exemple"
+	},
+
+	"Remarque": {
+		"prefix": "remarque",
+		"body": [
+			"%%% DÉBUT REMARQUE %%%",
+			"\\begin{remarque}",
+			"\t$TM_SELECTED_TEXT$1",
+			"\\end{remarque}",
+			"%%% FIN REMARQUE %%%$0"
+		],
+		"description": "Créé l'environnement remarque"
+	},
+
+	"Preuve": {
+		"prefix": "preuve",
+		"body": [
+			"%%% DÉBUT PREUVE %%%",
+			"\\begin{preuve}",
+			"\t$TM_SELECTED_TEXT$1",
+			"\\end{preuve}",
+			"%%% FIN PREUVE %%%$0"
+		],
+		"description": "Créé l'environnement preuve"
+	},
+
+	"Exercice": {
+		"prefix": ["enonce","exercice","correction"],
+		"body": [
+			"%%% DÉBUT EXERCICE %%%",
+			"\\bareme{$1} %#1=nombre",
+			"\\competence{$2} %#1=nom",
+			"\\difficulte{$3} %#1=nombre",
+			"\\source{$4} %#1=nom",
+			"\\theme{$5} %#1=nom",
+			"",
+			"\\begin{enonce}",
+			"\t$TM_SELECTED_TEXT$6",
+			"\\end{enonce}",
+			"",
+			"\\begin{correction}",
+			"\t$7",
+			"\\end{correction}",
+			"%%% FIN EXERCICE %%%$0"
+		],
+		"description": "Insère un exercice constitué des commandes de paramétrage, de l'énoncé et de la correction"
+	},
+
+	"Visiblecmd": {
+		"prefix": "visiblecmd",
+		"body": [
+			"\\visiblecmd[${1:true}]{$TM_SELECTED_TEXT$2}$0"
+		],
+		"description": "Insère la commande visible"
+	},
+
+
+  
+
+
+
+	"Tabular": {
+		"prefix": ["tabular","tableau"],
+		"body": [
+			"\\begin{tabular}{|c|c|} %l|c|r|p{1cm}|P{1cm}",
+					"\t\\hline",
+					"\t\\rowcolor{gray} ${1:Cellule 1} & ${2:Cellule 2}\\\\\\",
+					"\t\\hline",
+					"\t\\cellcolor{gray} ${3:Cellule 3} & ${4:Cellule 4}\\\\\\",
+					"\t\\hline",
+			"\\end{tabular}$0"
+		],
+		"description": "Créé un environnement tabular"
+	},
+
+	"Includegraphics": {
+		"prefix": ["includegraphics","image"],
+		"body": [
+			"\\includegraphics[width=${1:1}\\linewidth]{$2}$0"
+		],
+		"description": "Insère une image"
+	},
+
+	"tikzpitcure": {
+		"prefix": "tikz",
+		"body": [
+			"\\begin{tikzpicture}[scale=0.5] %Echelle de la figure",
+			"",
+			"\t% Définition des points",
+			"\t\\coordinate (A) at (0,0);",
+			"\t\\draw (A) node[below left] {\\$A$}; %Etiquette haut gauche",
+			"",
+			"\t\\coordinate (B) at (7,0);",
+			"\t\\draw (B) node[above right] {\\$B$}; %Etiquette bas droit",
+			"",
+			"\t\\coordinate (C) at (0,3);",
+			"\t\\draw ($(C)+(-0.5,0.5)$) node{\\$C$};%Etiquette décalage manuel",
+			"",
+			"\t% Dessin du triangle",
+			"\t\\draw (A) -- (B) -- (C) -- cycle;",
+			"",
+			"\t% Marquage de l'angles droits",
+			"\t\\draw (A) rectangle ++(0.5,0.5);",
+			"",
+			"\t% Ajout des mesures et côtes avec décalage manuel par rapport aux sommets",
+			"\t\\draw[<->] ($(A)+(-0.5,0)$) -- node[left] {\\$AC$} ($(C)+(-0.5,0)$);",
+			"\t\\draw[<->] ($(A)+(0,-0.5)$) -- node[below] {\\$AB$} ($(B)+(0,-0.5)$);",
+			"\t\\draw[<->] ($(B)+(0,0.5)$) -- node[above right] {\\$BC$} ($(C)+(0,0.5)$);",
+			"",
+			"\\end{tikzpicture}"
+		],
+		"description": "Insère une figure tikz"
+	},
+
+	"Scratch": {
+		"prefix": "scratch",
+		"body": [
+			"\\begin{scratch}",
+				"\t\\blockinit{quand \\greenflag est cliqué}",
+				"\t\\blockrepeat{répéter \\ovalnum{4} fois}",
+				"\t{",
+					"\t\t\\blockifelse{si \\booloperator{\\ovalvariable{x} > \\ovalnum{1}} alors}",
+						"\t\t{",
+							"\t\t\t\\blockmove{tourner de \\turnleft{} de \\ovalnum{45} degrés}",
+						"\t\t}",
+						"\t\t{",
+							"\t\t\t\\blockvariable{mettre \\selectmenu{ma_variable} à \\ovaloperator{\\ovalvariable{x} + \\ovalnum{10}}}",
+						"\t\t}",
+				"\t}",
+				"\t\\blocklook{dire \\ovalnum{fin}}",
+			"\\end{scratch}"
+		],
+		"description": "Insère un environnement scratch"
+	},
+
+	"Lignes": {
+		"prefix": ["lignes","carreaux","seyes"],
+		"body": [
+			"\\lignes{${1:seyes}}{${2:1}} ${0:%#1=carreau/surligne, #2=nombre}"
+		],
+		"description": "Insère des lignes ou surligne un paragraphe une ligne sur deux"
+	},
+
+	"Saut": {
+		"prefix": "saut",
+		"body": [
+			"\\saut{${1:ligne}} ${0:%#1=fiche/diapo}"
+		],
+		"description": "Insère un saut de ligne ou de page"
+	},
+
+	"Subfile": {
+		"prefix": "subfile",
+		"body": [
+			"\\subfileinclude{${1:./chemin/vers/le/fichier}}$0"
+		],
+		"description": "Insère un saut de ligne ou de page"
+	},
+
+	"Environnement": {
+		"prefix": "environnement",
+		"body": [
+			"\\begin{$1}",
+			"\t$TM_SELECTED_TEXT$2",
+			"\\end{$1}$0"
+		],
+		"description": "Insère un environnement générique"
+	},
+
+
+
+
+  
+
+
+
+	"Math Math mode": {
+		"prefix": ["math","$...$"],
+		"body": [
+			"$$TM_SELECTED_TEXT$1$$0"
+		],
+		"description": "Environnement pour les maths"
+	},
+
+	"Math Exposant": {
+		"prefix": "exposant",
+		"body": [
+			"^{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Exposant"
+	},
+
+	"Math Indice": {
+		"prefix": "indice",
+		"body": [
+			"_{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Indice"
+	},
+
+	"Math Racine": {
+		"prefix": "racine",
+		"body": [
+			"\\sqrt{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Racine"
+	},
+
+	"Math Angle": {
+		"prefix": ["angle","widehat"],
+		"body": [
+			"\\widehat{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Chapeau de l'angle"
+	},
+
+	"Math Arc de cercle": {
+		"prefix": ["arc","overparen"],
+		"body": [
+			"\\overparen{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Arc de cercle"
+	},
+
+	"Math Calligraphie": {
+		"prefix": ["calligraphie","mathcal"],
+		"body": [
+			"\\mathcal{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Lettres calligraphiées"
+	},
+
+	"Math Simplifié": {
+		"prefix": ["cancel","simplifié"],
+		"body": [
+			"\\cancel{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Simplifie"
+	},
+
+	"Math Petite fraction": {
+		"prefix": "frac",
+		"body": [
+			"\\frac{$1}{$2}$0"
+		],
+		"description": "Créé une 'petite' fraction"
+	},
+
+	"Math Grande fraction": {
+		"prefix": "dfrac",
+		"body": [
+			"\\dfrac{$1}{$2}$0"
+		],
+		"description": "Créé une 'grande' fraction"
+	},
+
+	"Math Numprint sans unité": {
+		"prefix": "np1",
+		"body": [
+			"\\np{$TM_SELECTED_TEXT$1}$0"
+		],
+		"description": "Met en forme les nombres"
+	},
+
+	"Math Numprint avec unité": {
+		"prefix": "np2",
+		"body": [
+			"\\np[$1]{$TM_SELECTED_TEXT$2}$0"
+		],
+		"description": "Met en forme les nombres et leurs unités"
+	},
+
+	"Math Fois": {
+		"prefix": ["times","fois"],
+		"body": [
+			"\\times"
+		],
+		"description": "Symbole fois"
+	},
+
+	"Math Diviser": {
+		"prefix": ["div"],
+		"body": [
+			"\\div"
+		],
+		"description": "Symbole diviser"
+	},
+
+	"Math différent": {
+		"prefix": ["différent"],
+		"body": [
+			"\\neq"
+		],
+		"description": "Symbole différent"
+	},
+
+	"Math Environ égal": {
+		"prefix": ["environ","approx"],
+		"body": [
+			"\\approx"
+		],
+		"description": "Environ égal"
+	},
+
+	"Math inférieur ou égal": {
+		"prefix": ["inférieur","leqslant"],
+		"body": [
+			"\\leqslant"
+		],
+		"description": "Inférieur"
+	},
+
+	"Math supérieur ou égal": {
+		"prefix": ["supérieur","geqslant"],
+		"body": [
+			"\\geqslant"
+		],
+		"description": "Supérieur"
+	},
+
+	"Math Grandes parenthèses": {
+		"prefix": ["parenthèses","left"],
+		"body": [
+			"\\left($TM_SELECTED_TEXT$1\\right)$0"
+		],
+		"description": "Parenthèses de taille automatique"
+	},
+
+	"Math Flèche de fonction": {
+		"prefix": ["flèche","longmapsto"],
+		"body": [
+			"\\longmapsto"
+		],
+		"description": "Flèche de définition d'une fonction"
+	},
+
+	"Math Perpendiculaire": {
+		"prefix": "perpendiculaire",
+		"body": [
+			"\\perp"
+		],
+		"description": "Symbole perpendiculaire"
+	},
+
+	"Math Not In": {
+		"prefix": "n'appartient pas",
+		"body": [
+			"\\notin"
+		],
+		"description": "Symbole de non appartenance"
+	},
+
+	"Math In": {
+		"prefix": "appartient",
+		"body": [
+			"\\in"
+		],
+		"description": "Symbole de non appartenance"
+	},
+
+
+
+  
+
+
+
+	"Guillemets": {
+		"prefix": ["guillemets"],
+		"body": [
+			"\\og$TM_SELECTED_TEXT$\\fg$0"
+		],
+		"description": "Guillemets"
+	},
+
+	"E accent aigu": {
+		"prefix": ["é majuscule"],
+		"body": [
+			"É"
+		],
+		"description": "É"
+	},
+
+	"E accent circonflexe": {
+		"prefix": ["ê majuscule"],
+		"body": [
+			"Ê"
+		],
+		"description": "Ê"
+	},
+
+	"A accent grave": {
+		"prefix": ["à majuscule"],
+		"body": [
+			"À"
+		],
+		"description": "À"
+	},
+
+	"C cédille": {
+		"prefix": ["ç majuscule"],
+		"body": [
+			"Ç"
+		],
+		"description": "Ç"
+	},
+
+	"Pourcent": {
+		"prefix": ["pourcent"],
+		"body": [
+			"\\%"
+		],
+		"description": "Pourcent"
+	},
+
+	"Accolades": {
+		"prefix": ["accolades"],
+		"body": [
+			"\\{$TM_SELECTED_TEXT$1\\\\}$0"
+		],
+		"description": "Accolades"
+	},
+
+	"Antislash": {
+		"prefix": ["antislash","backslash","textbackslash"],
+		"body": [
+			"\\textbackslash"
+		],
+		"description": "Antislash"
+	},
+
+	"Dollar": {
+		"prefix": "dollar",
+		"body": [
+			"\\\\$"
+		],
+		"description": "Antislash"
+	}
+
+}
