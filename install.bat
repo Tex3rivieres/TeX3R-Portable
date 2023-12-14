@@ -5,22 +5,52 @@ echo * Author: Frederic Leothaud - Vincent Crombez    *
 echo * Copyright (C) [2023] TeX3R                     *
 echo **************************************************
 echo.
+rem chcp 65001
+cd /d %~dp0
 timeout /t 5 /nobreak >nul
 setlocal enabledelayedexpansion
 
-rem chcp 65001
-cd /d %~dp0
+::::::: Congiguration liens telechargement::::::
+
+:: VSCODIUM ::
+SET LINK_VSCODIUM=https://github.com/VSCodium/vscodium/releases/download/1.84.2.23319/VSCodium-win32-x64-1.84.2.23319.zip
+
+:: ClasseStyle ::
+SET LINK_ClasseStyle=https://github.com/Tex3rivieres/TeX3R-ClasseStyle/archive/refs/tags/3.0.1.zip
+
+:: Extraire la partie après 'tags/'
+set "temp=!LINK_ClasseStyle:*tags/=!"
+set "version=!temp:.zip=!"
+
+:: Extraire la version en retirant .zip
+@REM for /f "delims=.zip" %%a in ("!temp!") do set "version=%%a"
+
+:: Concaténer pour former le chemin final
+SET "PATH_ClasseStyle=%CD%\TeX3R-ClasseStyle-!version!"
+
+:: Afficher le chemin
+echo Chemin ClasseStyle: !PATH_ClasseStyle!
+pause
+
+:: Miktex ::
+
+SET LINK_Miktex='https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktexsetup-5.5.0+1763023-x64.zip'
+
+::::::: FIN Congiguration liens telechargement::::::
+
+
 
 :: Variables environnement systeme temporaires
-SET PATH=%CD%\PortableGit\cmd;%CD%\miktex\texmfs\install\miktex\bin\x64;%CD%\TeX3R-ClasseStyle-TeX3R;%CD%\7zip;%cd%\VSCodium\bin;%PATH%
+SET PATH=%CD%\PortableGit\cmd;%CD%\miktex\texmfs\install\miktex\bin\x64;%PATH_ClasseStyle%;%CD%\7zip;%cd%\VSCodium\bin;%PATH%
 SET OSFONTDIR=%cd%\TeX3R-ClasseStyle\tex\fonts\TeX3R
 
 :: Configuration des variables PATH pour utiliser dans les commandes
-SET TeX3R-ClasseStyle_PATH=%cd%\TeX3R-ClasseStyle-TeX3R
 SET VSCodium_PATH=%cd%\VSCodium
 SET Miktex_PATH=%cd%\miktex
 SET PortableGit_PATH=%cd%\PortableGit\cmd
 SET zip_PATH=%cd%\7zip
+
+:: Congiguration liens telechargement
 
 cls
 echo **********************************
@@ -30,7 +60,7 @@ timeout /t 2 /nobreak >nul
 
 cls
 echo Telechargement de VSCodium...
-powershell -command "& { Invoke-WebRequest -Uri 'https://github.com/VSCodium/vscodium/releases/download/1.84.2.23319/VSCodium-win32-x64-1.84.2.23319.zip' -OutFile 'VSCodium.zip' }"
+powershell -command "& { Invoke-WebRequest -Uri %LINK_VSCODIUM% -OutFile 'VSCodium.zip' }"
 
 cls
 echo extraction de VScodium.zip...
@@ -81,7 +111,7 @@ echo **********************************
 timeout /t 2 /nobreak >nul
 cls
 echo Telechargement de TeX3R-ClasseStyle.zip...
-powershell -command "& { Invoke-WebRequest -Uri 'https://github.com/Tex3rivieres/TeX3R-ClasseStyle/archive/refs/tags/TeX3R.zip' -OutFile 'TeX3R-ClasseStyle.zip' }"
+powershell -command "& { Invoke-WebRequest -Uri %LINK_ClasseStyle% -OutFile 'TeX3R-ClasseStyle.zip' }"
 
 cls
 echo extraction de TeX3R-ClasseStyle.zip...
@@ -96,7 +126,7 @@ timeout /t 2 /nobreak >nul
 
 cls
 echo Telechargement de l'utilitaire de configuration MiKTeX
-powershell -command "& { Invoke-WebRequest -Uri 'https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktexsetup-5.5.0+1763023-x64.zip' -OutFile 'miktexsetup.zip' }"
+powershell -command "& { Invoke-WebRequest -Uri %LINK_Miktex% -OutFile 'miktexsetup.zip' }"
 
 cls
 echo Extraction de l'utilitaire
@@ -118,7 +148,7 @@ timeout /t 2 /nobreak >nul
 
 cls
 echo Enregistrement de TeX3R-ClasseStyle dans MiKTeX...
-initexmf --register-root="%TeX3R-ClasseStyle_PATH%"
+initexmf --register-root="%PATH_ClasseStyle%"
 
 cls
 echo Mise a jour filename database
