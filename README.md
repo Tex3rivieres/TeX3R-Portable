@@ -44,7 +44,7 @@ TeX3R c'est aussi une extension pour VSCode/VSCodium, avec des panels de raccour
   
    * Mettre à jour MiKTeX : 
 
- > <img src="./assets/images/update-MiKTeX.png" width="400"/>
+ > <img src="./assets/images/update-miktex.png" width="400"/>
   
    * Ajouter **"./TeX3R-Portable/TeX3R-CS"** au "Path" MiKTeX
  
