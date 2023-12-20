@@ -28,9 +28,6 @@ set "version=!temp:.zip=!"
 :: Concaténer pour former le chemin final
 SET "PATH_ClasseStyle=%CD%\TeX3R-ClasseStyle-!version!"
 
-:: Afficher le chemin
-echo Chemin ClasseStyle: !PATH_ClasseStyle!
-pause
 
 :: Miktex ::
 
