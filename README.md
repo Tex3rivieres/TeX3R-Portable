@@ -48,11 +48,11 @@ TeX3R c'est aussi une extension pour VSCode/VSCodium, avec des panels de raccour
   
    * Ajouter **"./TeX3R-Portable/TeX3R-CS"** au "Path" MiKTeX
  
-  > ![](assets/images/path-MiKTeX.png)
+  > ![](assets/images/path-miktex.png)
 
    * Rafraîchir la base de données des noms de fichiers
  
-  > ![](assets/images/name_database-MiKTeX.png)
+  > ![](assets/images/name_database-miktex.png)
 
 ### Utilisation du programme
 * Utiliser **"./TeXR3R-Portable/TeX3R.bat"** pour exécuter et maintenir à jour TeX3R
