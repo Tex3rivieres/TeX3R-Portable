@@ -10,44 +10,29 @@ cd /d %~dp0
 timeout /t 5 /nobreak >nul
 setlocal enabledelayedexpansion
 
-::::::: Congiguration liens telechargement::::::
+::::::: Congiguration liens/Repos telechargement::::::
 
 :: VSCODIUM ::
-SET LINK_VSCODIUM=https://github.com/VSCodium/vscodium/releases/download/1.84.2.23319/VSCodium-win32-x64-1.84.2.23319.zip
+SET "Repo_VSCodium=VSCodium/vscodium"
 
 :: ClasseStyle ::
-SET LINK_ClasseStyle=https://github.com/Tex3rivieres/TeX3R-ClasseStyle/archive/refs/tags/3.0.1.zip
-
-:: Extraire la partie après 'tags/'
-set "temp=!LINK_ClasseStyle:*tags/=!"
-set "version=!temp:.zip=!"
-
-:: Extraire la version en retirant .zip
-@REM for /f "delims=.zip" %%a in ("!temp!") do set "version=%%a"
-
-:: Concaténer pour former le chemin final
-SET "PATH_ClasseStyle=%CD%\TeX3R-ClasseStyle-!version!"
-
+SET "Repo_TeX3RClasseStyle=Tex3rivieres/TeX3R-ClasseStyle"
 
 :: Miktex ::
 
-SET LINK_Miktex='https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktexsetup-5.5.0+1763023-x64.zip'
+SET "Link_Miktex=https://miktex.org/download/win/miktexsetup-x64.zip"
 
 ::::::: FIN Congiguration liens telechargement::::::
 
-
-
-:: Variables environnement systeme temporaires
-SET PATH=%CD%\PortableGit\cmd;%CD%\miktex\texmfs\install\miktex\bin\x64;%PATH_ClasseStyle%;%CD%\7zip;%cd%\VSCodium\bin;%PATH%
-SET OSFONTDIR=%cd%\TeX3R-ClasseStyle\tex\fonts\TeX3R
-
 :: Configuration des variables PATH pour utiliser dans les commandes
-SET VSCodium_PATH=%cd%\VSCodium
-SET Miktex_PATH=%cd%\miktex
-SET PortableGit_PATH=%cd%\PortableGit\cmd
-SET zip_PATH=%cd%\7zip
+SET "PATH_VSCodium=%cd%\VSCodium"
+SET "PATH_Miktex=%cd%\miktex"
+SET "PATH_ClasseStyle=%cd%\TeX3R-ClasseStyle"
+:: Variables environnement systeme temporaires
+SET "PATH=%CD%\miktex\texmfs\install\miktex\bin\x64;%PATH_ClasseStyle%;%cd%\VSCodium\bin;%PATH%"
+SET "OSFONTDIR=%cd%\TeX3R-ClasseStyle\tex\fonts\TeX3R"
 
-:: Congiguration liens telechargement
+
 
 cls
 echo **********************************
@@ -56,50 +41,18 @@ echo **********************************
 timeout /t 2 /nobreak >nul
 
 cls
-echo Telechargement de VSCodium...
-powershell -command "& { Invoke-WebRequest -Uri %LINK_VSCODIUM% -OutFile 'VSCodium.zip' }"
+echo Telechargement de la derniere version de VSCodium
 
-cls
-echo extraction de VScodium.zip...
-powershell -command "& { Expand-Archive -Path '.\VScodium.zip' -DestinationPath '.\VScodium' }"
+powershell -command "& {$apiUrl = 'https://api.github.com/repos/%Repo_VSCodium%/releases/latest'; $response = Invoke-RestMethod -Uri $apiUrl; $asset = $response.assets | Where-Object { $_.name -like '*VSCodium-win32-x64*.zip' } | Select-Object -First 1; if ($asset -eq $null) { Write-Error 'Asset correspondant non trouvé.'; exit; } $zipUrl = $asset.browser_download_url; Invoke-WebRequest -Uri $zipUrl -OutFile 'VSCodium.zip'; }"
+
+echo Décompression de l'archive...
+powershell -command "Expand-Archive -LiteralPath 'VSCodium.zip' -DestinationPath '%PATH_VSCodium%'"
+
 
 echo Creation du repertoire personnel data...
-md %Vscodium_PATH%\data
+md %PATH_VSCodium%\data
 
 
-@REM cls
-@REM echo **********************************
-@REM echo * Installation de 7-Zip          *
-@REM echo **********************************
-@REM timeout /t 2 /nobreak >nul
-@REM cls
-@REM echo Telechargement de 7zip...
-@REM powershell -command "& { Invoke-WebRequest -Uri 'https://www.7-zip.org/a/7z2301-x64.exe' -OutFile '7zip.exe' }"
-
-@REM cls
-@REM echo Installation 7zip (cliquer sur "oui")
-@REM timeout /t 3 /nobreak >nul
-@REM start /wait "" 7zip.exe /S /D="%zip_PATH%"
-
-@REM cls
-@REM echo **********************************
-@REM echo * Installation de PortableGit    *
-@REM echo **********************************
-@REM timeout /t 2 /nobreak >nul
-
-@REM cls
-@REM echo Telechargement de PortableGit...
-@REM powershell -command "& { Invoke-WebRequest -Uri 'https://github.com/git-for-windows/git/releases/download/v2.43.0.windows.1/PortableGit-2.43.0-64-bit.7z.exe' -OutFile 'PortableGit.7z.exe' }"
-
-@REM cls
-@REM echo **********************************
-@REM echo * Installation de PortableGit    *
-@REM echo **********************************
-@REM timeout /t 2 /nobreak >nul
-
-@REM cls
-@REM echo Decompression de PortableGit...
-@REM 7z x PortableGit.7z.exe -o"%CD%\PortableGit" -y
 
 cls
 echo **********************************
@@ -107,13 +60,11 @@ echo * TeX3R-ClasseStyle              *
 echo **********************************
 timeout /t 2 /nobreak >nul
 cls
-echo Telechargement de TeX3R-ClasseStyle.zip...
-powershell -command "& { Invoke-WebRequest -Uri %LINK_ClasseStyle% -OutFile 'TeX3R-ClasseStyle.zip' }"
+echo Telechargement de la derniere version de TeX3R-ClasseStyle.zip...
+powershell -command "& { $apiUrl = 'https://api.github.com/repos/%Repo_TeX3RClasseStyle%/releases/latest'; $response = Invoke-RestMethod -Uri $apiUrl; $zipUrl = $response.assets[0].browser_download_url; Invoke-WebRequest -Uri $zipUrl -OutFile 'TeX3R-ClasseStyle.zip'; }"
 
-cls
-echo extraction de TeX3R-ClasseStyle.zip...
-powershell -command "& { Expand-Archive -Path '.\TeX3R-ClasseStyle.zip' -DestinationPath '.' }"
-
+echo Décompression de l'archive...
+powershell -command "Expand-Archive -LiteralPath 'TeX3R-ClasseStyle.zip' -DestinationPath '%PATH_ClasseStyle%'"
 
 cls
 echo **********************************
@@ -123,7 +74,7 @@ timeout /t 2 /nobreak >nul
 
 cls
 echo Telechargement de l'utilitaire de configuration MiKTeX
-powershell -command "& { Invoke-WebRequest -Uri %LINK_Miktex% -OutFile 'miktexsetup.zip' }"
+powershell -command "& { Invoke-WebRequest -Uri %Link_Miktex% -OutFile 'miktexsetup.zip' }"
 
 cls
 echo Extraction de l'utilitaire
@@ -139,7 +90,7 @@ miktexsetup_standalone --verbose --local-package-repository=%CD%\miktex-temp  --
 
 cls
 echo **********************************
-echo * Mise a jour des packages MiKTeX*
+echo *      Configuration MiKTeX      *
 echo **********************************
 timeout /t 2 /nobreak >nul
 
@@ -181,7 +132,7 @@ echo star.bat
 > start.bat echo cd /d %%~dp0
 >> start.bat echo ::
 >> start.bat echo :: Variables environnement systeme temporaires
->> start.bat echo SET PATH=%%CD%%\PortableGit\cmd;%%CD%%\miktex\texmfs\install\miktex\bin\x64;%%CD%%\Tex3R-ClasseStyle;%%cd%%\VSCodium\bin;%%PATH%%
+>> start.bat echo SET PATH=%%CD%%\miktex\texmfs\install\miktex\bin\x64;%%CD%%\Tex3R-ClasseStyle;%%cd%%\VSCodium\bin;%%PATH%%
 >> start.bat echo SET OSFONTDIR=%%cd%%\TeX3R-ClasseStyle\tex\fonts\TeX3R
 >> start.bat echo start "" "%%CD%%\Vscodium\VSCodium.exe"
 timeout /t 2 /nobreak >nul
