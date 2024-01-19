@@ -82,13 +82,16 @@ Vous êtes prêt à compiler votre premier fichier TeX
 
 ### Première compilation
 
-Créer un fichier tex
+* Créer un fichier exemple.tex
 
-Cliquer sur l'icone "nouveau document" dans le panneau latéral de l'extension Tex3R
+> <img src="./assets/images/new_doc.png" width="400"/>
 
-Ecrire un contenu après %Contenu du document
+* Cliquer sur l'icone "Nouveau document" dans le panneau latéral de l'extension Tex3R
+* Ecrire un contenu après %Contenu du document
 
-Lancer la compilation
+* Lancer la compilation
+
+> <img src="./assets/images/new_doc_tex.png" width="800"/>
 
 **Attention**, la première compilation d'un document ```.tex``` est un peu longue car MiKTeX télécharge et installe les packages qui ne sont pas déjà dans sa base.
 
