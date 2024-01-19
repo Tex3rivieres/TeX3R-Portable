@@ -99,4 +99,4 @@ Vous êtes prêt à compiler votre premier fichier TeX
 
 ### Pour les impatients
 
-Archive prête à l'emploi  à décompresser dans votre support USB :
+Archive prête à l'emploi  à décompresser dans votre support USB : https://flnextcloud.duckdns.org/index.php/s/6Xe5ymey7cBoFK5
