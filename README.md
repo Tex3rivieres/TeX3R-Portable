@@ -38,7 +38,7 @@ Le fichier d'installation peut-être supprimé ou utilisé pour refaire une inst
 
 * Télécharger [MiKTeX](https://MiKTeX.org/download)
 * Renommer **"basic-MiKTeX-*.exe"** en **"MiKTeX-portable.exe"**
-* Exécuter et indiquer **".\TeX3R-Portable\MiKTeX"** comme répertoire d'installation
+* Exécuter et indiquer **".\TeX3R-Portable\miktex"** comme répertoire d'installation
 
 #### Ajout de la classe et du style TeX3R
 
