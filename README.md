@@ -10,57 +10,90 @@ TeX3R c'est avant tout une classe **classe-tex3R.cls** et un style **style-tex3R
 
 TeX3R c'est aussi une extension pour VSCode/VSCodium, avec des panels de raccourcis et une configuration adaptée à la classe et au style TeX3R : [https://github.com/Tex3rivieres/TeX3R-Workshop](https://github.com/Tex3rivieres/TeX3R-Workshop)
 
-
 ## TeX3R-Portable installation automatique (Windows)
-* Créer un répertoire à la racine du support USB. Par exemple: **"./TeX3R-Portable"**
-* Copier install.bat à l'intérieur et exécuter
+
+* Créer un répertoire à la racine du support USB. Par exemple: **".\TeX3R-Portable"**
+* Copier InstallTeX3R.bat à l'intérieur et exécuter
+
+A la fin de l'installation 2 fichiers sont créés
+
+* Le fichier "StartTeX3R.bat" permet de démarrer le programme
+* Le fichier "updateClasseStyle.bat" permet de mettre à jour la Classe et le Style TeX3R
+
+Le fichier d'installation peut-être supprimé ou utilisé pour refaire une installation complète à jour.
 
 ## TeX3R-Portable installation manuelle
 
 ### Répertoire du programme
-* Créer un répertoire à la racine du support USB. Par exemple: **"./TeX3R-Portable"**
 
-### Git pour installation et mise à jour
- 
-* Télécharger la version "Git Portable" adaptée à votre sytème d'exploitation : [git-scm.com/downloads](https://git-scm.com/downloads)
-* Décompresser l'archive dans **"./TeX3R-Portable/PortableGit"**
+* Créer un répertoire à la racine du support USB. Par exemple: **".\TeX3R-Portable"**
 
-### VSCodium : Editeur de texte
+### VSCodium : Éditeur de texte
 
-* Télécharger l'archive de VSCodium adaptée à votre sytème d'exploitation :  [github.com/VSCodium/vscodium/releases](https://github.com/VSCodium/vscodium/releases)
-* Décompresser l'archive dans **"./TeX3R-Portable/VSCodium"**
-* Créer le répertoire **"./TeX3R-Portable/VSCodium/data"**
+* Télécharger l'archive de VSCodium adaptée à votre système d'exploitation :  [github.com/VSCodium/vscodium/releases](https://github.com/VSCodium/vscodium/releases)
+* Décompresser l'archive dans **".\TeX3R-Portable\VSCodium"**
+* Créer le répertoire **".\TeX3R-Portable/VSCodium\data"**
 
 ### MiKTeX : Interpréteur Latex
+
 * Télécharger [MiKTeX](https://MiKTeX.org/download)
 * Renommer **"basic-MiKTeX-*.exe"** en **"MiKTeX-portable.exe"**
- * Exécuter et indiquer **"./TeX3R-Portable/MiKTeX"** comme répertoire d'installation
-* Copier **TeX3R.bat** dans **"./TeX3R-Portable"**
-* Exécuter **"./TeXR3R-Portable/TeX3R.bat"** puis quitter VSCodium.
-* Exécuter **"./Tex3R_Portable/MiKTeX/MiKTeX-portable.cmd"**
- * Ouvrir la console à partir de la barre des tâches :
+* Exécuter et indiquer **".\TeX3R-Portable\MiKTeX"** comme répertoire d'installation
 
- > ![](assets/images/console-miktek.png)
-  
-   * Mettre à jour MiKTeX : 
+#### Ajout de la classe et du style TeX3R
 
- > <img src="./assets/images/update-miktex.png" width="400"/>
-  
-   * Ajouter **"./TeX3R-Portable/TeX3R-CS"** au "Path" MiKTeX
- 
-  > ![](assets/images/path-miktex.png)
+Télécharger l'archive de la dernière version de TeX3R-ClasseStyle : [https://github.com/Tex3rivieres/TeX3R-ClasseStyle/releases/latest](https://github.com/Tex3rivieres/TeX3R-ClasseStyle/releases/latest)
 
-   * Rafraîchir la base de données des noms de fichiers
- 
-  > ![](assets/images/name_database-miktex.png)
+Décompresser l'archive et déplacer le sous-répertoire "\tex\lualatex" vers ".\Tex3R-Portable\miktex\texmfs\install\tex"
 
-### Utilisation du programme
-* Utiliser **"./TeXR3R-Portable/TeX3R.bat"** pour exécuter et maintenir à jour TeX3R
-* Installer l'extension TeX3R (1 seule fois)
+* Ouvrir la console à partir de la barre des tâches :
+
+> ![](assets/images/console-miktek.png)
+
+* Mettre à jour MiKTeX :
+
+> <img src="./assets/images/update-miktex.png" width="400"/>
+
+* Rafraîchir la base de données des noms de fichiers
+
+> ![](assets/images/name_database-miktex.png)
+
+### Premier démarrage
+
+* Créer le fichier **"./TeXR3R-Portable/StartTeX3R.bat"**
+
+Ajouter le contenu
+
+```bash
+cd /d %~dp0
+:: Variables environnement systeme temporaires
+SET PATH=%CD%\miktex\texmfs\install\miktex\bin\x64;%cd%\VSCodium\bin;%PATH%
+SET OSFONTDIR=%cd%\TeX3R-ClasseStyle\tex\fonts\TeX3R
+start "" "%CD%\Vscodium\VSCodium.exe"
+```
+
+Enregistrer et fermer
+
+Exécuter StartTeX3R.bat
+
+Installer l'extension TeX3R
+
+Vous êtes prêt à compiler votre premier fichier TeX
+
+### Première compilation
+
+Créer un fichier tex
+
+Cliquer sur l'icone "nouveau document" dans le panneau latéral de l'extension Tex3R
+
+Ecrire un contenu après %Contenu du document
+
+Lancer la compilation
+
 **Attention**, la première compilation d'un document ```.tex``` est un peu longue car MiKTeX télécharge et installe les packages qui ne sont pas déjà dans sa base.
 
-### Enjoy ;) 
+### Enjoy ;)
 
 ### Pour les impatients
 
-ArchiveSFX prête à l'emploi.
+Archive prête à l'emploi  à décompresser dans votre support USB :

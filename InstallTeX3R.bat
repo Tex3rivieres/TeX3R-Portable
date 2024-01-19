@@ -42,7 +42,7 @@ powershell -command "& {$apiUrl = 'https://api.github.com/repos/%Repo_VSCodium%/
 cls
 echo *** Installation de VSCodium *** 
 echo Decompression de l'archive...
-powershell -command "Expand-Archive -LiteralPath 'VSCodium.zip' -DestinationPath '%PATH_VSCodium%'"
+powershell -command "Expand-Archive -LiteralPath 'VSCodium.zip' -DestinationPath '%PATH_VSCodium%' -Force"
 
 cls
 echo *** Installation de VSCodium *** 
@@ -58,7 +58,7 @@ powershell -command "& { Invoke-WebRequest -Uri %Link_Miktex% -OutFile 'miktexse
 cls
 echo *** Installation de MiKTeX ***
 echo Extraction de l'utilitaire
-powershell -command "& { Expand-Archive -Path 'miktexsetup.zip' -DestinationPath '.' }"
+powershell -command "& { Expand-Archive -Path 'miktexsetup.zip' -DestinationPath '.' } -Force"
 
 cls
 echo *** Installation de MiKTeX ***
@@ -78,7 +78,6 @@ powershell -command "& { $apiUrl = 'https://api.github.com/repos/%Repo_TeX3RClas
 cls
 echo *** Installation de MiKTeX - Ajout des paquets TeX3R-ClasseStyle***
 echo Decompression de archive TeX3R-ClasseStyle...
-@REM powershell -command "Expand-Archive -LiteralPath 'TeX3R-ClasseStyle.zip' -DestinationPath '%PATH_ClasseStyle%'"
 powershell -command "Expand-Archive -LiteralPath 'TeX3R-ClasseStyle.zip' -DestinationPath '%PATH_ClasseStyle%' -Force"
 
 cls
@@ -141,14 +140,14 @@ call codium --install-extension Tex3R.tex3r
 
 
 echo *** Creation des fichiers Batch ***
-echo Fichier start.bat
+echo Fichier StartTex3R.bat
 echo star.bat
-> start.bat echo cd /d %%~dp0
->> start.bat echo ::
->> start.bat echo :: Variables environnement systeme temporaires
->> start.bat echo SET PATH=%%CD%%\miktex\texmfs\install\miktex\bin\x64;%%CD%%\Tex3R-ClasseStyle;%%cd%%\VSCodium\bin;%%PATH%%
->> start.bat echo SET OSFONTDIR=%%cd%%\TeX3R-ClasseStyle\tex\fonts\TeX3R
->> start.bat echo start "" "%%CD%%\Vscodium\VSCodium.exe"
+> StartTex3R.bat echo cd /d %%~dp0
+>> StartTex3R.bat echo ::
+>> StartTex3R.bat echo :: Variables environnement systeme temporaires
+>> StartTex3R.bat echo SET PATH=%%CD%%\miktex\texmfs\install\miktex\bin\x64;%%CD%%\Tex3R-ClasseStyle;%%cd%%\VSCodium\bin;%%PATH%%
+>> StartTex3R.bat echo SET OSFONTDIR=%%cd%%\TeX3R-ClasseStyle\tex\fonts\TeX3R
+>> StartTex3R.bat echo start "" "%%CD%%\Vscodium\VSCodium.exe"
 timeout /t 2 /nobreak >nul
 
 cls
@@ -183,6 +182,6 @@ echo updateClasseStyle.bat
 
 cls
 echo *************************************************************
-echo * fin de l'installation, utiliser start.bat pour demarrer.  *
+echo * fin de l'installation, utiliser StartTex3R.bat pour demarrer.  *
 echo *************************************************************
 pause
