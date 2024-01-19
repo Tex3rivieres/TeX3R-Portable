@@ -32,7 +32,7 @@ Le fichier d'installation peut-être supprimé ou utilisé pour refaire une inst
 
 * Télécharger l'archive de VSCodium adaptée à votre système d'exploitation :  [github.com/VSCodium/vscodium/releases](https://github.com/VSCodium/vscodium/releases)
 * Décompresser l'archive dans **".\TeX3R-Portable\VSCodium"**
-* Créer le répertoire **".\TeX3R-Portable/VSCodium\data"**
+* Créer le répertoire **".\TeX3R-Portable\VSCodium\data"**
 
 ### MiKTeX : Interpréteur Latex
 
